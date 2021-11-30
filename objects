@@ -1,0 +1,35 @@
+Stage One: 
+{fruit: Apple, 
+description: I am a fruit that starts with an A, Im sometimes green or red and I come from a tree. What am I ?}
+
+{fruit: Banana, 
+description: I am a curved, yellow fruit with a thick skin and a soft flesh. If you eat me too much you might be called the monkey. What am I ?}
+
+{fruit: Orange, 
+description: I am a fruit that starts with an O, you must peel me in order to eat me. I come in slices. What am I ?}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Stage Two: 
+{super_heroes: Iron Man, 
+description: Some of you may know me as Tony Stark, but I am a powered armour suit with superhuman strength, speed and reflexes. What am I ?}
+
+{super_heroes: Doctor Strange, 
+description: I once worked as a neurosurgeon after an accident, I couldnt use my hands. I found magical powers. I am the Earths newest Master of Mystic Arts. What am I ?}
+
+{super_heroes: Wolverine, 
+description: I am a mutant who possess animal-keen senses with enhanced physical capabilities that can heal me if I get injured. I have 3 claws in each hand. What am I ?}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Stage Three: 
+
+{kitchen_appliance: Kettle, 
+description: I am a container used to boil water. If you would like some coffee be sure to use me. What am I ?}
+
+{kitchen_appliance: Blender, 
+description: I am a container used to mix soft foods could be a fruit or a vegetable and I turn that to a liquid. What am I ?}
+
+{kitchen_appliance: Microwave, 
+description: I am a small oven that is used to heat or cook food very fast. When I am done heating food I make a loud noise. What am I ?}
+
