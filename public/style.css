@@ -1,0 +1,15 @@
+html{
+    background-color: #64485c;
+}
+ body{
+    background-color: #94485c;
+    width: 80%;
+    height: 88%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    border-style: unset;
+    border-radius: 9px 9px 9px 9px;
+    box-shadow:1px 0px 3px 7px #ac5aa1e0 ;
+
+}
