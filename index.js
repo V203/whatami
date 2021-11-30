@@ -18,20 +18,40 @@ const PORT = process.env.PORT || 3010;
 //     ssl: {
 //         rejectUnauthorized: false
 //     }
-// });
+// 
 
 app.get('/',(req,res)=>{
     res.render('index');
 });
 
-app.get('/level',(req,res)=>{
-    res.render('level');
+app.get("/input",(req,res)=>{
+    res.render('input');
+
 });
 
-app.get('',()=>{
-    
+app.get('/stage1/:word', (req, res) => {
+    res.render('stage1');
 });
 
+app.get('/stage2/:word', (req, res) => {
+    res.render('stage2');
+});
+
+app.get('/stage3/:word', (req, res) => {
+    res.render('stage3');
+});
+
+app.get('/stage4/:word', (req, res) => {
+    res.render('stage4');
+});
+
+app.get('/stage5/:word', (req, res) => {
+    res.render('stage5');
+});
+
+app.get('/stage6/:word', (req, res) => {
+    res.render('stage6');
+});
 
 app.set('view engine', 'handlebars');
 app.engine('handlebars', exphbs({ partialsDir: "./views/partials", viewPath: './views', layoutsDir: './views/layouts' }));
