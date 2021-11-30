@@ -24,6 +24,14 @@ app.get('/',(req,res)=>{
     res.render('index');
 });
 
+app.get('/level',(req,res)=>{
+    res.render('level');
+});
+
+app.get('',()=>{
+    
+});
+
 
 app.set('view engine', 'handlebars');
 app.engine('handlebars', exphbs({ partialsDir: "./views/partials", viewPath: './views', layoutsDir: './views/layouts' }));
