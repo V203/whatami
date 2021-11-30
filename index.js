@@ -18,10 +18,15 @@ const PORT = process.env.PORT || 3010;
 //     ssl: {
 //         rejectUnauthorized: false
 //     }
-// });
+// 
 
 app.get('/',(req,res)=>{
     res.render('index');
+});
+
+app.get("/input",(req,res)=>{
+    res.render('input');
+
 });
 
 app.get('/stage1/:word', (req, res) => {

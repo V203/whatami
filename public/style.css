@@ -32,3 +32,10 @@ body {
   text-decoration: none;
   padding: 10px 50% 10px 50%;
 }
+.inputField{
+
+    height: 155px;
+    background-color: bisque;
+    border-radius: 12px 12px 12px 12px;
+
+}
