@@ -1,7 +1,8 @@
-function runSpeechRecognition() {
+function runSpeechRecognition(input) {
     // output and action div references
     var output = document.getElementById("output");
     var action = document.getElementById("action");
+    var nextElem = document.getElementById("nextStage")
     // instantiate Speech Recognition Object
     var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
     var recognition = new SpeechRecognition();
@@ -17,9 +18,15 @@ function runSpeechRecognition() {
 
     recognition.onresult = function (event) {
         var transcript = event.results[0][0].transcript;
-        var confidence = event.results[0][0].confidence;
-        output.innerHTML = "<b>Text:</b> " + transcript + "<br/> <b>Confidence:</b> " + confidence * 100 + "%";
+        let result = '';
+        if (transcript.toLowerCase() == input.toLowerCase()) {
+        result = 'Correct';
+        } else {
+            result = 'Incorrect';
+        }
+        output.innerHTML = "<b>Detected word:</b> " + transcript + "<br>Answer was: " + input + "<br>Your answer was " + result + "!";
         output.classList.remove("hide");
+        nextElem.classList.remove("hide");
     };
 
     recognition.start();
