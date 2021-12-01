@@ -30,11 +30,9 @@ app.get("/input", (req, res) => {
 });
 
 app.get('/stage1/:word', (req, res) => {
-    console.log(req.params.word);
     if (req.params.word == 4) {
         res.redirect('/stage2/1');
     } else {
-        let nextStage = req.params.word++;
         res.render('stage1', { word: req.params.word, nextStage: req.params.word++ });
     }
 });

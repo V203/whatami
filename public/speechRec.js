@@ -20,13 +20,15 @@ function runSpeechRecognition(input) {
         var transcript = event.results[0][0].transcript;
         let result = '';
         if (transcript.toLowerCase() == input.toLowerCase()) {
-        result = 'Correct';
+            result = 'Correct';
         } else {
             result = 'Incorrect';
         }
         output.innerHTML = "<b>Detected word:</b> " + transcript + "<br>Answer was: " + input + "<br>Your answer was " + result + "!";
         output.classList.remove("hide");
-        nextElem.classList.remove("hide");
+        if (result === "Correct") {
+            nextElem.classList.remove("hide");
+        };
     };
 
     recognition.start();
