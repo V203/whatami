@@ -25,7 +25,7 @@ function runSpeechRecognition(input) {
         } else {
             result = 'Incorrect';
         }
-        output.innerHTML = "<b>Detected word:</b> " + transcript + "<br>Answer was: " + input + "<br>Your answer was " + result + "!";
+        output.innerHTML = "<b>Detected word:</b> " + transcript + "<br>Your answer was " + result + "!";
         output.classList.remove("hide");
         if (result === "Correct") {
             nextElem.classList.remove("hide");

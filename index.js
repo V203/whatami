@@ -43,6 +43,10 @@ app.get('/stage1/:word', (req, res) => {
     const currWord = ansKeys[parseInt(req.params.word) - 1];
     const currDesc = answers[ansKeys[parseInt(req.params.word) - 1]];
 
+    console.log(nextStage);
+    console.log(currWord);
+    console.log(currDesc);
+
     if (req.params.word == 4) {
         res.redirect('/stage2/1');
     } else {
