@@ -1,7 +1,55 @@
+<div class="spacer"></div>
+
 <div class="container">
-    <div class="row">
-        <div class="col-4"></div>
-        <div class="col-4"><h1>Stage 6</h1></div>
-        <div class="col-4"></div>
+  <div class="row">
+    <div class="col-7">
+      <div class="mainScreen">
+        <div class="spacer"></div>
+        <h4 class="diplay">Classroom</h4>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <div class="card" style="width: 100%;">
+          <img class="card-img-top" src="..." alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Description</h5>
+            <p class="card-text wordDesc"></p>
+            <button
+              class="btn btn-primary"
+              onclick="runSpeechRecognition('{{word}}')"
+            >Start Speaking</button>
+            <br />
+            <span id="action"></span>
+            <br />
+            <div id="output" class="hide"></div>
+            <br />
+            <form action="/stage6/{{nextStage}}">
+              <input
+                type="submit"
+                id="nextStage"
+                value="Next Stage"
+                class="hide"
+              />
+            </form>
+          </div>
+        </div>
+        <script>
+          const descElem = document.querySelector('.wordDesc');
+          descElem.innerHTML = '{{obj}}';
+        </script>
+      </div>
+
     </div>
+    <div class="col-1">
+
+    </div>
+    <div class="col-4">
+      <div class="sideNav">
+        <h5>Player Name : {{player}}</h5>
+        <h5>Experience : {{exp}}</h5>
+        <h5>Level : {{level}}</h5>
+        <h5>Score : {{score}}</h5>
+
+      </div>
+    </div>
+  </div>
 </div>

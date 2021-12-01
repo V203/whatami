@@ -8,7 +8,7 @@ body {
   background-color: #94485c;
   width: 80%;
   box-shadow: 1px 0px 3px 7px #494649e0;
-  height: 88%;
+  height: 89%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 5%;
@@ -44,5 +44,29 @@ body {
 
 .hide {
   display: none;
-  visibility: hidden;
 }
+
+
+.mainScreen{
+  background-color: bisque;
+  width: 100%;
+  min-height: 300px;
+  border-radius: 12px 12px 12px 12px;
+  align-items: center;
+}
+
+.sideNav{
+  background-color: blanchedalmond;
+  width: 100%;
+  min-height: 300px;
+  border-radius: 12px 12px 12px 12px;  
+  text-align: left;
+  font-family: fantasy;
+  padding: 5px 5px 5px 5px;
+
+  
+}
+.spacer{
+  height: 10px;
+}
+

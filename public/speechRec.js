@@ -1,4 +1,5 @@
 function runSpeechRecognition(input) {
+    console.log(input);
     // output and action div references
     var output = document.getElementById("output");
     var action = document.getElementById("action");
@@ -8,11 +9,11 @@ function runSpeechRecognition(input) {
     var recognition = new SpeechRecognition();
 
     recognition.onstart = function () {
-        action.innerHTML = "<small>listening, please state your guess</small>";
+        action.innerHTML = "<small>Listening, please state your guess</small>";
     };
 
     recognition.onspeechend = function () {
-        action.innerHTML = "<small>stopped listening, hope you are done...</small>";
+        action.innerHTML = "<small>Stopped listening, hope you are done...</small>";
         recognition.stop();
     }
 
@@ -20,13 +21,15 @@ function runSpeechRecognition(input) {
         var transcript = event.results[0][0].transcript;
         let result = '';
         if (transcript.toLowerCase() == input.toLowerCase()) {
-        result = 'Correct';
+            result = 'Correct';
         } else {
             result = 'Incorrect';
         }
-        output.innerHTML = "<b>Detected word:</b> " + transcript + "<br>Answer was: " + input + "<br>Your answer was " + result + "!";
+        output.innerHTML = "<b>Detected word:</b> " + transcript + "<br>Your answer was " + result + "!";
         output.classList.remove("hide");
-        nextElem.classList.remove("hide");
+        if (result === "Correct") {
+            nextElem.classList.remove("hide");
+        };
     };
 
     recognition.start();
