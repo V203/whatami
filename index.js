@@ -20,15 +20,17 @@ const pool = new Pool({
     }
 });
 
-
 app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.get("/input", (req, res) => {
-    res.render('input');
+app.get('/badges', async (req, res) => {
+    res.render('badges');
+})
 
-});
+app.get('/titles', (req, res) => {
+    res.render('titles');
+})
 
 app.get('/stage1/:word', (req, res) => {
     let answers =
@@ -70,7 +72,7 @@ app.get('/stage2/:word', (req, res) => {
     const currDesc = answers[ansKeys[parseInt(req.params.word) - 1]];
 
     if (req.params.word == 4) {
-        
+
         res.redirect('/stage3/1');
     } else {
         res.render('stage2', { word: currWord, nextStage: nextStage, obj: currDesc });
