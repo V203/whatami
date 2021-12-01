@@ -1,7 +1,23 @@
 <div class="container">
-    <div class="row">
-        <div class="col-4"></div>
-        <div class="col-4"><h1>Stage 2</h1></div>
-        <div class="col-4"></div>
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <h1>Stage 2</h1>
+      <h2 class="wordDesc"></h2>
+      <button onclick="runSpeechRecognition('{{word}}')">Start Speaking</button>
+      <span id="action"></span>
+      <br />
+      <br />
+      <div id="output" class="hide"></div>
     </div>
+  <script>
+          const descElem = document.querySelector('.wordDesc');
+          descElem.innerHTML = '{{obj}}';
+  </script>
+    <div class="col-4">
+        <form action="/stage2/{{nextStage}}">
+        <input type="submit" id="nextStage" value="Next Stage" class="hide">
+        </form>
+    </div>
+  </div>
 </div>

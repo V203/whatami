@@ -1,25 +1,19 @@
 <div class="container">
-  <script>
-    function myFunction(input) { 
-        let answers = 
-        {'Apple' : 'I am a fruit that starts with the letter A, sometimes I am green and other times I am red. I come from a tree, what am I?', 
-         'Banana' : 'I am a curved, yellow fruit with a thick skin and a soft flesh. If you eat me too much you might be called the monkey. What am I?',
-         'Orange' : 'I am a fruit that starts with an O, you must peel me in order to eat me. I come in slices. What am I ?'
-        }; 
-        let keys = Object.keys(answers);
-        let wordIndex = input - 2;
-        runSpeechRecognition(keys[wordIndex]);}
-  </script>
   <div class="row">
     <div class="col-4"></div>
     <div class="col-4">
       <h1>Stage 1</h1>
-      <button onclick="myFunction({{word}})">Start Speaking</button>
+      <h2 class="wordDesc"></h2>
+      <button onclick="runSpeechRecognition('{{word}}')">Start Speaking</button>
       <span id="action"></span>
       <br />
       <br />
       <div id="output" class="hide"></div>
     </div>
+  <script>
+          const descElem = document.querySelector('.wordDesc');
+          descElem.innerHTML = '{{obj}}';
+  </script>
     <div class="col-4">
         <form action="/stage1/{{nextStage}}">
         <input type="submit" id="nextStage" value="Next Stage" class="hide">

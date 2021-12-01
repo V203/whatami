@@ -1,4 +1,5 @@
 function runSpeechRecognition(input) {
+    console.log(input);
     // output and action div references
     var output = document.getElementById("output");
     var action = document.getElementById("action");
