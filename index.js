@@ -20,9 +20,16 @@ const pool = new Pool({
     }
 });
 
+let usr_id;
+
 app.get('/', (req, res) => {
-    res.render('index');
+    res.redirect('/stageSelect/Yolanda37')
 });
+
+app.get('/stageSelect/:usr', (req, res) => {
+    usr_id = req.params.usr;
+    res.render('index')
+})
 
 app.get('/badges', async (req, res) => {
     res.render('badges');
@@ -53,7 +60,7 @@ app.get('/stage1/:word', (req, res) => {
     if (req.params.word == 4) {
         res.redirect('/stage2/1');
     } else {
-        res.render('stage1', { word: currWord, nextStage: nextStage, obj: currDesc });
+        res.render('stage1', { word: currWord, nextStage: nextStage, obj: currDesc, usr: usr_id });
     }
 });
 
@@ -75,7 +82,7 @@ app.get('/stage2/:word', (req, res) => {
 
         res.redirect('/stage3/1');
     } else {
-        res.render('stage2', { word: currWord, nextStage: nextStage, obj: currDesc });
+        res.render('stage2', { word: currWord, nextStage: nextStage, obj: currDesc, usr: usr_id });
     }
 });
 
@@ -96,7 +103,7 @@ app.get('/stage3/:word', (req, res) => {
     if (req.params.word == 4) {
         res.redirect('/stage4/1');
     } else {
-        res.render('stage3', { word: currWord, nextStage: nextStage, obj: currDesc });
+        res.render('stage3', { word: currWord, nextStage: nextStage, obj: currDesc, usr: usr_id });
     }
 });
 
@@ -117,7 +124,7 @@ app.get('/stage4/:word', (req, res) => {
     if (req.params.word == 4) {
         res.redirect('/stage5/1');
     } else {
-        res.render('stage4', { word: currWord, nextStage: nextStage, obj: currDesc });
+        res.render('stage4', { word: currWord, nextStage: nextStage, obj: currDesc, usr: usr_id });
     }
 });
 
@@ -138,7 +145,7 @@ app.get('/stage5/:word', (req, res) => {
     if (req.params.word == 4) {
         res.redirect('/stage6/1');
     } else {
-        res.render('stage5', { word: currWord, nextStage: nextStage, obj: currDesc });
+        res.render('stage5', { word: currWord, nextStage: nextStage, obj: currDesc, usr: usr_id });
     }
 });
 
@@ -159,7 +166,7 @@ app.get('/stage6/:word', (req, res) => {
     if (req.params.word == 4) {
         res.redirect('/');
     } else {
-        res.render('stage6', { word: currWord, nextStage: nextStage, obj: currDesc });
+        res.render('stage6', { word: currWord, nextStage: nextStage, obj: currDesc, usr: usr_id });
     }
 });
 

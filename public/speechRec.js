@@ -25,12 +25,15 @@ function runSpeechRecognition(input) {
         } else {
             result = 'Incorrect';
         }
-        output.innerHTML = "<b>Detected word:</b> " + transcript + "<br>Your answer was " + result + "!";
         output.classList.remove("hide");
         if (result === "Correct") {
             nextElem.classList.remove("hide");
-        };
+            output.innerHTML = "<b>Detected word:</b> " + transcript + "<br>Your answer was correct! Great job!";
+        } else {
+            output.innerHTML = "<b>Detected word:</b> " + transcript + "<br>Your answer was a little off, please try again!";
+        }
     };
+
 
     recognition.start();
 }

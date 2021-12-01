@@ -1,7 +1,7 @@
 body {
   background-color: #64485c;
   text-align: center;
-  margin-top: 8%;
+  margin-top: 4%;
 }
 
 .containerAll {
@@ -77,3 +77,6 @@ body {
   height: 10px;
 }
 
+.wide {
+  width: 100%;
+}

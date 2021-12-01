@@ -9,7 +9,11 @@
         <div class="spacer"></div>
         <div class="spacer"></div>
         <div class="card" style="width: 100%;">
-          <img class="card-img-top" src="/countries.png" alt="Picture of kitchen appliances">
+          <img
+            class="card-img-top"
+            src="/countries.png"
+            alt="Picture of kitchen appliances"
+          />
           <div class="card-body">
             <h5 class="card-title">Description</h5>
             <p class="card-text wordDesc"></p>
@@ -17,7 +21,7 @@
               class="btn btn-primary"
               onclick="runSpeechRecognition('{{word}}')"
             >Start Speaking</button>
-            <br>
+            <br />
             <span id="action"></span>
             <br />
             <div id="output" class="hide"></div>
@@ -48,8 +52,10 @@
         <h5>Experience : {{exp}}</h5>
         <h5>Level : {{level}}</h5>
         <h5>Score : {{score}}</h5>
-
-      </div>
+      </div><br />
+      <form action="/stageSelect/{{usr}}" method="get">
+        <button type="submit" class="btn btn-primary wide" wide>Back</button>
+      </form>
     </div>
   </div>
 </div>
