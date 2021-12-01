@@ -11,14 +11,15 @@ if (process.env.DATABASE_URL && !local) {
     useSSL = true;
 }
 const PORT = process.env.PORT || 3010;
-// const connectionString = process.env.DATABASE_URL || 'postgresql://codex-coder:pg123@localhost:5432/regdb';
+const connectionString = process.env.DATABASE_URL || 'postgres://bktniypaqnuoge:e8ee725409cb0c14d0234080aeb609849f4c292de4ec4fb604a4f37a83cd7a70@ec2-54-88-154-67.compute-1.amazonaws.com:5432/dd768o0n4e06ij';
 
-// const pool = new Pool({
-//     connectionString,
-//     ssl: {
-//         rejectUnauthorized: false
-//     }
-// 
+const pool = new Pool({
+    connectionString,
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
+
 
 app.get('/', (req, res) => {
     res.render('index');
@@ -69,6 +70,7 @@ app.get('/stage2/:word', (req, res) => {
     const currDesc = answers[ansKeys[parseInt(req.params.word) - 1]];
 
     if (req.params.word == 4) {
+        
         res.redirect('/stage3/1');
     } else {
         res.render('stage2', { word: currWord, nextStage: nextStage, obj: currDesc });
