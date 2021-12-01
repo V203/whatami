@@ -9,11 +9,11 @@ function runSpeechRecognition(input) {
     var recognition = new SpeechRecognition();
 
     recognition.onstart = function () {
-        action.innerHTML = "<small>listening, please state your guess</small>";
+        action.innerHTML = "<small>Listening, please state your guess</small>";
     };
 
     recognition.onspeechend = function () {
-        action.innerHTML = "<small>stopped listening, hope you are done...</small>";
+        action.innerHTML = "<small>Stopped listening, hope you are done...</small>";
         recognition.stop();
     }
 
