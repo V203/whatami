@@ -37,8 +37,7 @@ app.get('/stage1/:word', async (req, res) => {
     const currDesc = answers[ansKeys[parseInt(req.params.word) - 1]];
 
     if (req.params.word == 4) {
-        res.redirect('/congrats');
-
+        res.redirect('/congrats/2');
     } else {
         res.render('stage1', {word: currWord, nextStage: nextStage, obj: currDesc});
 
@@ -59,8 +58,7 @@ app.get('/stage2/:word', async (req, res) => {
     const currWord = ansKeys[parseInt(req.params.word) - 1];
     const currDesc = answers[ansKeys[parseInt(req.params.word) - 1]];
     if (req.params.word == 4) {
-
-        res.redirect('/stage3/1');
+        res.redirect('/congrats/3');
     } else {
         res.render('stage2', {word: currWord, nextStage: nextStage, obj: currDesc});
     }
@@ -80,7 +78,7 @@ app.get('/stage3/:word', async (req, res) => {
     const currWord = ansKeys[parseInt(req.params.word) - 1];
     const currDesc = answers[ansKeys[parseInt(req.params.word) - 1]];
     if (req.params.word == 4) {
-        res.redirect('/stage4/1');
+        res.redirect('/congrats/4');
     } else {
         res.render('stage3', {word: currWord, nextStage: nextStage, obj: currDesc});
     }
@@ -101,7 +99,7 @@ app.get('/stage4/:word', async (req, res) => {
     const currDesc = answers[ansKeys[parseInt(req.params.word) - 1]];
 
     if (req.params.word == 4) {
-        res.redirect('/stage5/1');
+        res.redirect('/congrats/5');
     } else {
         res.render('stage4', {word: currWord, nextStage: nextStage, obj: currDesc});
     }
@@ -121,7 +119,7 @@ app.get('/stage5/:word', async (req, res) => {
     const currWord = ansKeys[parseInt(req.params.word) - 1];
     const currDesc = answers[ansKeys[parseInt(req.params.word) - 1]];
     if (req.params.word == 4) {
-        res.redirect('/stage6/1');
+        res.redirect('/congrats/6');
     } else {
         res.render('stage5', {word: currWord, nextStage: nextStage, obj: currDesc});
     }
@@ -148,8 +146,7 @@ app.get('/stage6/:word', async (req, res) => {
 });
 
 app.get('/congrats/:nextStage', (req, res) => {
-    
-    res.render('congrats', {nextStage});
+    res.render('congrats', {nextStage : req.params.nextStage});
 }) 
 
 app.set('view engine', 'handlebars');
