@@ -1,5 +1,6 @@
 const express = require("express");
 const exphbs = require('express-handlebars');
+const session = require('express-session');
 const bodyParser = require("body-parser");
 const pg = require('pg');
 const FactoryServices = require("./factoryServices");
@@ -24,10 +25,10 @@ const factoryServices = FactoryServices(pool);
 let usr_id;
 
 app.get('/', (req, res) => {
-    res.redirect('/stageSelect/Yolanda37')
+    res.redirect('/stageSelect')
 });
 
-app.get('/stageSelect/:usr', (req, res) => {
+app.get('/stageSelect', (req, res) => {
     usr_id = req.params.usr;
     res.render('index')
 })
@@ -40,7 +41,7 @@ app.get('/titles', (req, res) => {
     res.render('titles');
 })
 
-app.get('/stage1/:word',async (req, res) => {
+app.get('/stage1/:word', async (req, res) => {
     let answers =
     {
         'Apple': 'I am a fruit that starts with the letter A, sometimes I am green and other times I am red. I come from a tree, what am I?',
@@ -58,15 +59,15 @@ app.get('/stage1/:word',async (req, res) => {
     // console.log(nextStage);
     // console.log(currWord);
     // console.log(currDesc);
-    let player = await factoryServices.getPlayerName()
-
-    let score = await factoryServices.getScore()
+    // let player = await factoryServices.getPlayerName();
+    // let score = await factoryServices.getScore();
 
     if (req.params.word == 4) {
         res.redirect('/stage2/1');
+
     } else {
-        res.render('stage1', {score, player, word: currWord, nextStage: nextStage, obj: currDesc , usr: usr_id ,add_factory: JSON.stringify(factoryServices)});
-       
+        res.render('stage1', {word: currWord, nextStage: nextStage, obj: currDesc});
+
     }
 });
 
@@ -89,7 +90,7 @@ app.get('/stage2/:word', async (req, res) => {
 
         res.redirect('/stage3/1');
     } else {
-        res.render('stage2', {score, player, word: currWord, nextStage: nextStage, obj: currDesc , usr: usr_id  });
+        res.render('stage2', { score, player, word: currWord, nextStage: nextStage, obj: currDesc, usr: usr_id });
     }
 });
 
@@ -111,11 +112,11 @@ app.get('/stage3/:word', async (req, res) => {
     if (req.params.word == 4) {
         res.redirect('/stage4/1');
     } else {
-        res.render('stage3', {score, player, word: currWord, nextStage: nextStage, obj: currDesc , usr: usr_id  });
+        res.render('stage3', { score, player, word: currWord, nextStage: nextStage, obj: currDesc, usr: usr_id });
     }
 });
 
-app.get('/stage4/:word',async (req, res) => {
+app.get('/stage4/:word', async (req, res) => {
     let answers =
     {
         'Germany': 'My flag is black,red and yellow. I am the home for Volkswagen. What am I?',
@@ -134,14 +135,14 @@ app.get('/stage4/:word',async (req, res) => {
     if (req.params.word == 4) {
         res.redirect('/stage5/1');
     } else {
-        res.render('stage4', {score, player, word: currWord, nextStage: nextStage, obj: currDesc , usr: usr_id  });
+        res.render('stage4', { score, player, word: currWord, nextStage: nextStage, obj: currDesc, usr: usr_id });
     }
 });
 
-app.get('/stage5/:word',async (req, res) => {
+app.get('/stage5/:word', async (req, res) => {
     let answers =
     {
-        'McDonalds': 'When you feeling low, we have a clown to have you singing Im loving it. If that still does not work we have a happy meal that comes with a toy. What am I?',
+        "Romans": "I hail from Rome, bringing Pizza to all with great combo deals. What am I?",
         'Steers': 'If you want the real thing dont sweat we got cheeseto make you feel mjojo but if you want to mix it up, we always got something for those wacky wednesdays to make you feel like a rib king. What am I?}',
         'KFC': 'If you feeling krushed we got the right pair of wings to have you feeling streetwise and finger licking good. What am I?'
     };
@@ -156,11 +157,11 @@ app.get('/stage5/:word',async (req, res) => {
     if (req.params.word == 4) {
         res.redirect('/stage6/1');
     } else {
-        res.render('stage5', {score, player, word: currWord, nextStage: nextStage, obj: currDesc , usr: usr_id  });
+        res.render('stage5', { score, player, word: currWord, nextStage: nextStage, obj: currDesc, usr: usr_id });
     }
 });
 
-app.get('/stage6/:word',async (req, res) => {
+app.get('/stage6/:word', async (req, res) => {
     let answers =
     {
         'Pencil case': 'I am a container used to carry all your pencils. What am I?',
@@ -177,7 +178,8 @@ app.get('/stage6/:word',async (req, res) => {
     let score = await factoryServices.getScore()
     if (req.params.word == 4) {
         res.redirect('/');
-    } else {res.render('stage6', {score, player, word: currWord, nextStage: nextStage, obj: currDesc , usr: usr_id  });
+    } else {
+        res.render('stage6', { score, player, word: currWord, nextStage: nextStage, obj: currDesc, usr: usr_id });
     }
 });
 
