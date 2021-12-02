@@ -2,7 +2,6 @@ const express = require("express");
 const exphbs = require('express-handlebars');
 const session = require('express-session');
 const bodyParser = require("body-parser");
-// const party = require("party-js");
 const pg = require('pg');
 const FactoryServices = require("./factoryServices");
 const app = express();
