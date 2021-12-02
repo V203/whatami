@@ -52,7 +52,7 @@
             <div id="output" class="hide"></div>
             <br />
             <form action="/stage1/{{nextStage}}">
-              <input type="submit" id="nextStage" value="Next Stage" class="hide btn btn-primary" />
+              <input type="submit" id="nextStage" value="Continue" class="hide btn btn-primary" />
             </form>
           </div>
         </div>
@@ -72,7 +72,7 @@
         <h5>Level : </h5><span class="lvlSpan"></span>
         <h5>Score : </h5><span class="scrSpan"></span>
       </div><br />
-      <form action="/stageSelect/{{usr}}" method="get">
+      <form action="/stageSelect" method="get">
         <button type="submit" class="btn btn-primary wide">Back</button>
       </form>
     </div>
