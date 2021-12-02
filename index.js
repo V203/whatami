@@ -20,17 +20,25 @@ const pool = new Pool({
     }
 });
 const factoryServices = FactoryServices(pool);
-// let playerName = async ()=>{ await factoryServices.getPlayerName();}
-app.get('/', async (req, res) => {
-    // console.log(await playerName);
-//    console.log(await factoryServices.addXp());
-    res.render('index',{});
+
+let usr_id;
+
+app.get('/', (req, res) => {
+    res.redirect('/stageSelect/Yolanda37')
 });
 
-app.get("/input", (req, res) => {
-    res.render('input');
+app.get('/stageSelect/:usr', (req, res) => {
+    usr_id = req.params.usr;
+    res.render('index')
+})
 
-});
+app.get('/badges', async (req, res) => {
+    res.render('badges');
+})
+
+app.get('/titles', (req, res) => {
+    res.render('titles');
+})
 
 app.get('/stage1/:word',async (req, res) => {
     let answers =
@@ -57,7 +65,8 @@ app.get('/stage1/:word',async (req, res) => {
     if (req.params.word == 4) {
         res.redirect('/stage2/1');
     } else {
-        res.render('stage1', {score, player, word: currWord, nextStage: nextStage, obj: currDesc });
+        res.render('stage1', {score, player, word: currWord, nextStage: nextStage, obj: currDesc , usr: usr_id  });
+       
     }
 });
 
@@ -77,10 +86,10 @@ app.get('/stage2/:word', async (req, res) => {
     let player = await factoryServices.getPlayerName()
     let score = await factoryServices.getScore()
     if (req.params.word == 4) {
-        
+
         res.redirect('/stage3/1');
     } else {
-        res.render('stage2', {player,score, word: currWord, nextStage: nextStage, obj: currDesc });
+        res.render('stage2', {score, player, word: currWord, nextStage: nextStage, obj: currDesc , usr: usr_id  });
     }
 });
 
@@ -102,7 +111,7 @@ app.get('/stage3/:word', async (req, res) => {
     if (req.params.word == 4) {
         res.redirect('/stage4/1');
     } else {
-        res.render('stage3', {player,score, word: currWord, nextStage: nextStage, obj: currDesc });
+        res.render('stage3', {score, player, word: currWord, nextStage: nextStage, obj: currDesc , usr: usr_id  });
     }
 });
 
@@ -125,7 +134,7 @@ app.get('/stage4/:word',async (req, res) => {
     if (req.params.word == 4) {
         res.redirect('/stage5/1');
     } else {
-        res.render('stage4', { player,score,word: currWord, nextStage: nextStage, obj: currDesc });
+        res.render('stage4', {score, player, word: currWord, nextStage: nextStage, obj: currDesc , usr: usr_id  });
     }
 });
 
@@ -147,7 +156,7 @@ app.get('/stage5/:word',async (req, res) => {
     if (req.params.word == 4) {
         res.redirect('/stage6/1');
     } else {
-        res.render('stage5', {player, score,word: currWord, nextStage: nextStage, obj: currDesc });
+        res.render('stage5', {score, player, word: currWord, nextStage: nextStage, obj: currDesc , usr: usr_id  });
     }
 });
 
@@ -168,8 +177,7 @@ app.get('/stage6/:word',async (req, res) => {
     let score = await factoryServices.getScore()
     if (req.params.word == 4) {
         res.redirect('/');
-    } else {
-        res.render('stage6', {player,score, word: currWord, nextStage: nextStage, obj: currDesc });
+    } else {res.render('stage6', {score, player, word: currWord, nextStage: nextStage, obj: currDesc , usr: usr_id  });
     }
 });
 

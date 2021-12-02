@@ -9,18 +9,30 @@
         <div class="spacer"></div>
         <div class="spacer"></div>
         <div class="card" style="width: 100%;">
-          <img class="card-img-top" src="..." alt="Card image cap" />
+          <img
+            class="card-img-top"
+            src="/superheroes.png"
+            alt="Image of super heroes"
+          />
           <div class="card-body">
             <h5 class="card-title">Description</h5>
             <p class="card-text wordDesc"></p>
-            <button class="btn btn-primary" onclick="runSpeechRecognition('{{word}}')">Start Speaking</button>
-            <br>
+            <button
+              class="btn btn-primary"
+              onclick="runSpeechRecognition('{{word}}')"
+            >Start Speaking</button>
+            <br />
             <span id="action"></span>
             <br />
             <div id="output" class="hide"></div>
             <br />
             <form action="/stage2/{{nextStage}}">
-              <input type="submit" id="nextStage" value="Next Stage" class="hide" />
+              <input
+                type="submit"
+                id="nextStage"
+                value="Next Stage"
+                class="hide btn btn-primary"
+              />
             </form>
           </div>
         </div>
@@ -40,8 +52,10 @@
         <h5>Experience : {{player.xp}}</h5>
         <h5>Level : {{player.level}}</h5>
         <h5>Score : {{score}}</h5>
-
-      </div>
+      </div><br>
+      <form action="/stageSelect/{{usr}}" method="get">
+        <button type="submit" class="btn btn-primary wide">Back</button>
+      </form>
     </div>
   </div>
 </div>
