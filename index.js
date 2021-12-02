@@ -1,36 +1,15 @@
 const express = require("express");
 const exphbs = require('express-handlebars');
-const session = require('express-session');
 const bodyParser = require("body-parser");
-// const party = require("party-js");
-const pg = require('pg');
-const FactoryServices = require("./factoryServices");
 const app = express();
-const Pool = pg.Pool;
-var useSSL = false;
-let local = process.env.LOCAL || false;
-if (process.env.DATABASE_URL && !local) {
-    useSSL = true;
-}
+
 const PORT = process.env.PORT || 3010;
-const connectionString = process.env.DATABASE_URL || 'postgres://bktniypaqnuoge:e8ee725409cb0c14d0234080aeb609849f4c292de4ec4fb604a4f37a83cd7a70@ec2-54-88-154-67.compute-1.amazonaws.com:5432/dd768o0n4e06ij';
-
-const pool = new Pool({
-    connectionString,
-    ssl: {
-        rejectUnauthorized: false
-    }
-});
-const factoryServices = FactoryServices(pool);
-
-let usr_id;
 
 app.get('/', (req, res) => {
     res.redirect('/stageSelect')
 });
 
 app.get('/stageSelect', (req, res) => {
-    usr_id = req.params.usr;
     res.render('index')
 })
 
@@ -57,14 +36,8 @@ app.get('/stage1/:word', async (req, res) => {
     const currWord = ansKeys[parseInt(req.params.word) - 1];
     const currDesc = answers[ansKeys[parseInt(req.params.word) - 1]];
 
-    // console.log(nextStage);
-    // console.log(currWord);
-    // console.log(currDesc);
-    // let player = await factoryServices.getPlayerName();
-    // let score = await factoryServices.getScore();
-
     if (req.params.word == 4) {
-        res.redirect('/stage2/1');
+        res.redirect('/congrats');
 
     } else {
         res.render('stage1', {word: currWord, nextStage: nextStage, obj: currDesc});
@@ -85,13 +58,11 @@ app.get('/stage2/:word', async (req, res) => {
     const nextStage = parseInt(req.params.word) + 1;
     const currWord = ansKeys[parseInt(req.params.word) - 1];
     const currDesc = answers[ansKeys[parseInt(req.params.word) - 1]];
-    let player = await factoryServices.getPlayerName()
-    let score = await factoryServices.getScore()
     if (req.params.word == 4) {
 
         res.redirect('/stage3/1');
     } else {
-        res.render('stage2', { score, player, word: currWord, nextStage: nextStage, obj: currDesc, usr: usr_id });
+        res.render('stage2', {word: currWord, nextStage: nextStage, obj: currDesc});
     }
 });
 
@@ -108,12 +79,10 @@ app.get('/stage3/:word', async (req, res) => {
     const nextStage = parseInt(req.params.word) + 1;
     const currWord = ansKeys[parseInt(req.params.word) - 1];
     const currDesc = answers[ansKeys[parseInt(req.params.word) - 1]];
-    let player = await factoryServices.getPlayerName();
-    let score = await factoryServices.getScore()
     if (req.params.word == 4) {
         res.redirect('/stage4/1');
     } else {
-        res.render('stage3', { score, player, word: currWord, nextStage: nextStage, obj: currDesc, usr: usr_id });
+        res.render('stage3', {word: currWord, nextStage: nextStage, obj: currDesc});
     }
 });
 
@@ -130,13 +99,11 @@ app.get('/stage4/:word', async (req, res) => {
     const nextStage = parseInt(req.params.word) + 1;
     const currWord = ansKeys[parseInt(req.params.word) - 1];
     const currDesc = answers[ansKeys[parseInt(req.params.word) - 1]];
-    let player = await factoryServices.getPlayerName()
-    let score = await factoryServices.getScore()
 
     if (req.params.word == 4) {
         res.redirect('/stage5/1');
     } else {
-        res.render('stage4', { score, player, word: currWord, nextStage: nextStage, obj: currDesc, usr: usr_id });
+        res.render('stage4', {word: currWord, nextStage: nextStage, obj: currDesc});
     }
 });
 
@@ -153,12 +120,10 @@ app.get('/stage5/:word', async (req, res) => {
     const nextStage = parseInt(req.params.word) + 1;
     const currWord = ansKeys[parseInt(req.params.word) - 1];
     const currDesc = answers[ansKeys[parseInt(req.params.word) - 1]];
-    let player = await factoryServices.getPlayerName()
-    let score = await factoryServices.getScore()
     if (req.params.word == 4) {
         res.redirect('/stage6/1');
     } else {
-        res.render('stage5', { score, player, word: currWord, nextStage: nextStage, obj: currDesc, usr: usr_id });
+        res.render('stage5', {word: currWord, nextStage: nextStage, obj: currDesc});
     }
 });
 
@@ -175,18 +140,16 @@ app.get('/stage6/:word', async (req, res) => {
     const nextStage = parseInt(req.params.word) + 1;
     const currWord = ansKeys[parseInt(req.params.word) - 1];
     const currDesc = answers[ansKeys[parseInt(req.params.word) - 1]];
-    let player = await factoryServices.getPlayerName()
-    let score = await factoryServices.getScore()
     if (req.params.word == 4) {
         res.redirect('/');
     } else {
-        res.render('stage6', { score, player, word: currWord, nextStage: nextStage, obj: currDesc, usr: usr_id });
+        res.render('stage6', {word: currWord, nextStage: nextStage, obj: currDesc});
     }
 });
 
-app.get('/congrats', (req, res) => {
+app.get('/congrats/:nextStage', (req, res) => {
     
-    res.render('congrats')
+    res.render('congrats', {nextStage});
 }) 
 
 app.set('view engine', 'handlebars');
