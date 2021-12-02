@@ -215,15 +215,10 @@ var confetti = {
 const badgeNum = parseInt(document.URL[document.URL.length - 1] -1);
 let arr = [];
 if (!sessionStorage["trophy"]) {
-	arr.push(1);
-	console.log(arr);
+	arr.push(badgeNum);
 	sessionStorage.setItem('trophy', JSON.stringify(arr));
 } else {
-	console.log(arr);
 	arr = JSON.parse(sessionStorage.getItem('trophy'));
-	console.log(arr);
-	console.log(typeof(arr.values));
-	console.log(badgeNum);
 	if (arr.includes(badgeNum) === false) {
 		arr.push(badgeNum);
 	}
