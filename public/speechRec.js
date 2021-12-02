@@ -2,8 +2,9 @@
 
 
 
-function runSpeechRecognition(input) {
-
+function runSpeechRecognition(input, factory) {
+    const recFactory = JSON.parse(factory);
+    console.log(recFactory);
 
     console.log(input);
     // output and action div references
@@ -30,7 +31,7 @@ function runSpeechRecognition(input) {
         var transcript = event.results[0][0].transcript;
         let result = '';
         if (transcript.toLowerCase() == input.toLowerCase()) {
-            // await factoryServices.addXp();
+            await factory.addXp();
             result = 'Correct';
         } else {
             result = 'Incorrect';

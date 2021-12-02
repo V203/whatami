@@ -65,7 +65,7 @@ app.get('/stage1/:word',async (req, res) => {
     if (req.params.word == 4) {
         res.redirect('/stage2/1');
     } else {
-        res.render('stage1', {score, player, word: currWord, nextStage: nextStage, obj: currDesc , usr: usr_id  });
+        res.render('stage1', {score, player, word: currWord, nextStage: nextStage, obj: currDesc , usr: usr_id ,add_factory: JSON.stringify(factoryServices)});
        
     }
 });
