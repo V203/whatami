@@ -12,9 +12,9 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="elementToFadeInAndOut">
+                <div class="fadeInAnimation">
                     <h1>Congratulations!!!</h1>
-
+                    <h2>You have completed this stage</h2>
 
 
                     <script>
@@ -35,19 +35,26 @@
                         stop();
                     </script>
 
-                    <img class="prizeImg" src="/prize.svg" alt="image of a trophy">
+                    <img class="prizeImg1" src="/prize.svg" alt="image of a bronze trophy">
+                    {{!-- <img class="prizeImg2" src="/prize.svg" alt="image of a silver trophy">
+                    <img class="prizeImg3" src="/prize.svg" alt="image of a gold trophy">
+                    <img class="prizeImg4" src="/prize.svg" alt="image of a platinum trophy">
+                    <img class="prizeImg5" src="/prize.svg" alt="image of a ruby trophy">
+                    <img class="prizeImg6" src="/prize.svg" alt="image of a diamond trophy"> --}}
+
 
                 </div>
                 <div class="row">
                     <div class="col-6">
-                        <form action="/stage{{nextStage}}/1">
-                            <input type="submit" id="nextStage" value="Next Stage" class="btn btn-primary" />
+                        <form action="/stageSelect/" method="get">
+                            <button type="submit" class="btn btn-primary wide">Back</button>
                         </form>
                     </div>
 
                     <div class="col-6">
-                        <form action="/stageSelect/" method="get">
-                            <button type="submit" class="btn btn-primary wide">Back</button>
+                        <form action="/stage{{nextStage}}/1">
+                            <input type="submit" id="nextStage" value="Next Stage" class="btn btn-primary"
+                                style="width: 100%;" />
                         </form>
                     </div>
                 </div>
