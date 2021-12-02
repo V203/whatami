@@ -41,8 +41,11 @@
                 </g>
               </g>
             </svg>
-            <button class="btn btn-primary" onclick="runSpeechRecognition('{{word}}','{{{add_factory}}}')">Start
-              Speaking</button>
+
+            <button
+              class="btn btn-primary"
+              onclick="runSpeechRecognition('{{word}}')"
+            >Start Speaking</button>
             <br />
             <span id="action"></span>
             <br />
@@ -65,14 +68,14 @@
     </div>
     <div class="col-4">
       <div class="sideNav">
-        <h5>Player Name : {{player.user_name}}</h5>
-        <h5>Experience : {{player.xp}}</h5>
-        <h5>Level : {{player.level}}</h5>
-        <h5>Score : {{score}}</h5>
-      </div><br>
+        <h5>Experience :</h5><span class="expSpan"></span>
+        <h5>Level : </h5><span class="lvlSpan"></span>
+        <h5>Score : </h5><span class="scrSpan"></span>
+      </div><br />
       <form action="/stageSelect/{{usr}}" method="get">
         <button type="submit" class="btn btn-primary wide">Back</button>
       </form>
     </div>
   </div>
 </div>
+<script src="/stageCl.js"></script>

@@ -9,7 +9,7 @@
         <div class="spacer"></div>
         <div class="spacer"></div>
         <div class="card" style="width: 100%;">
-          <img class="card-img-top" src="/countries.png" alt="Picture of kitchen appliances" />
+          <img class="card-img-top" src="/countries.png" alt="Image of a fruit" />
           <div class="card-body">
             <h5 class="card-title">Description</h5>
             <p class="card-text wordDesc"></p>
@@ -65,14 +65,14 @@
     </div>
     <div class="col-4">
       <div class="sideNav">
-        <h5>Player Name : {{player.user_name}}</h5>
-        <h5>Experience : {{player.xp}}</h5>
-        <h5>Level : {{player.level}}</h5>
-        <h5>Score : {{score}}</h5>
+        <h5>Experience :</h5><span class="expSpan"></span>
+        <h5>Level : </h5><span class="lvlSpan"></span>
+        <h5>Score : </h5><span class="scrSpan"></span>
       </div><br />
       <form action="/stageSelect/{{usr}}" method="get">
-        <button type="submit" class="btn btn-primary wide" wide>Back</button>
+        <button type="submit" class="btn btn-primary wide">Back</button>
       </form>
     </div>
   </div>
 </div>
+<script src="/stageCl.js"></script>

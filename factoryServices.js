@@ -32,6 +32,5 @@ module.exports =  function FactoryServices(pool){
         getLevel,
         getScore,
         addXp
-
     }
 };
