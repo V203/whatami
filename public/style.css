@@ -149,7 +149,7 @@ h1, h2, h4 {
   margin-left: auto;
   margin-right: auto;
   width: 20%;
-  filter: sepia(79%) saturate(2476%) hue-rotate(360deg) brightness(118%);
+  filter: saturate(2476%) hue-rotate(300deg) brightness(118%);
 
 }
 
