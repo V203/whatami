@@ -15,7 +15,7 @@
                 <div class="elementToFadeInAndOut">
                     <h1>Congratulations!!!</h1>
 
-                
+
 
                     <script>
 
@@ -34,8 +34,22 @@
                         start();
                         stop();
                     </script>
+
                     <img class="prizeImg" src="prize.svg" alt="image of a trophy">
 
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <form action="/stage1/{{nextStage}}">
+                            <input type="submit" id="nextStage" value="Next Stage" class="hide btn btn-primary" />
+                        </form>
+                    </div>
+
+                    <div class="col-6">
+                        <form action="/stageSelect/{{usr}}" method="get">
+                            <button type="submit" class="btn btn-primary wide">Back</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
