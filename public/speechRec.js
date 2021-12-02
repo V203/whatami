@@ -1,4 +1,11 @@
-function runSpeechRecognition(input) {
+
+
+
+
+function runSpeechRecognition(input, factory) {
+    const recFactory = JSON.parse(factory);
+    console.log(recFactory);
+
     console.log(input);
     // output and action div references
     var output = document.getElementById("output");
@@ -16,21 +23,28 @@ function runSpeechRecognition(input) {
         action.innerHTML = "<small>Stopped listening, hope you are done...</small>";
         recognition.stop();
     }
+    // const FactoryServices = require("../factoryServices");
+    // const factoryServices = FactoryServices(pool);
 
-    recognition.onresult = function (event) {
+
+    recognition.onresult = async function (event) {
         var transcript = event.results[0][0].transcript;
         let result = '';
         if (transcript.toLowerCase() == input.toLowerCase()) {
+            await factory.addXp();
             result = 'Correct';
         } else {
             result = 'Incorrect';
         }
-        output.innerHTML = "<b>Detected word:</b> " + transcript + "<br>Your answer was " + result + "!";
         output.classList.remove("hide");
         if (result === "Correct") {
             nextElem.classList.remove("hide");
-        };
+            output.innerHTML = "<b>Detected word:</b> " + transcript + "<br>Your answer was correct! Great job!";
+        } else {
+            output.innerHTML = "<b>Detected word:</b> " + transcript + "<br>Your answer was a little off, please try again!";
+        }
     };
+
 
     recognition.start();
 }

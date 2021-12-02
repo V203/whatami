@@ -1,7 +1,7 @@
 body {
   background-color: #64485c;
   text-align: center;
-  margin-top: 8%;
+  margin-top: 4%;
 }
 
 .containerAll {
@@ -87,20 +87,6 @@ body {
   height: 10px;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-/* Putting font poppins it is a very beautiful font also if you dont have installed it on your system it might not show so you need to import it from *google fonts* */
-  font-family: 'Poppins';
+.wide {
+  width: 100%;
 }
-
-.prizeImg{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 20%;
-  /* filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%); */
-}
-
-

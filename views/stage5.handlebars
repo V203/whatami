@@ -9,7 +9,11 @@
         <div class="spacer"></div>
         <div class="spacer"></div>
         <div class="card" style="width: 100%;">
-          <img class="card-img-top" src="/fastfood.png" alt="Image of country flags">
+          <img
+            class="card-img-top"
+            src="/fastfood.png"
+            alt="Image of country flags"
+          />
           <div class="card-body">
             <h5 class="card-title">Description</h5>
             <p class="card-text wordDesc"></p>
@@ -17,7 +21,7 @@
               class="btn btn-primary"
               onclick="runSpeechRecognition('{{word}}')"
             >Start Speaking</button>
-            <br>
+            <br />
             <span id="action"></span>
             <br />
             <div id="output" class="hide"></div>
@@ -27,7 +31,7 @@
                 type="submit"
                 id="nextStage"
                 value="Next Stage"
-                class="hide"
+                class="hide btn btn-primary"
               />
             </form>
           </div>
@@ -44,12 +48,14 @@
     </div>
     <div class="col-4">
       <div class="sideNav">
-        <h5>Player Name : {{player}}</h5>
-        <h5>Experience : {{exp}}</h5>
-        <h5>Level : {{level}}</h5>
+        <h5>Player Name : {{player.user_name}}</h5>
+        <h5>Experience : {{player.xp}}</h5>
+        <h5>Level : {{player.level}}</h5>
         <h5>Score : {{score}}</h5>
-
-      </div>
+      </div><br />
+      <form action="/stageSelect/{{usr}}" method="get">
+        <button type="submit" class="btn btn-primary wide">Back</button>
+      </form>
     </div>
   </div>
 </div>

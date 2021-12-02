@@ -3,8 +3,7 @@ const exphbs = require('express-handlebars');
 const bodyParser = require("body-parser");
 // const party = require("party-js");
 const pg = require('pg');
-
-
+const FactoryServices = require("./factoryServices");
 const app = express();
 const Pool = pg.Pool;
 var useSSL = false;
@@ -21,18 +20,28 @@ const pool = new Pool({
         rejectUnauthorized: false
     }
 });
+const factoryServices = FactoryServices(pool);
 
+let usr_id;
 
 app.get('/', (req, res) => {
-    res.render('index');
+    res.redirect('/stageSelect/Yolanda37')
 });
 
-app.get("/input", (req, res) => {
-    res.render('input');
+app.get('/stageSelect/:usr', (req, res) => {
+    usr_id = req.params.usr;
+    res.render('index')
+})
 
-});
+app.get('/badges', async (req, res) => {
+    res.render('badges');
+})
 
-app.get('/stage1/:word', (req, res) => {
+app.get('/titles', (req, res) => {
+    res.render('titles');
+})
+
+app.get('/stage1/:word',async (req, res) => {
     let answers =
     {
         'Apple': 'I am a fruit that starts with the letter A, sometimes I am green and other times I am red. I come from a tree, what am I?',
@@ -40,24 +49,29 @@ app.get('/stage1/:word', (req, res) => {
         'Orange': 'I am a fruit that starts with an O, you must peel me in order to eat me. I come in slices. What am I ?'
     };
 
+
     const ansKeys = Object.keys(answers);
 
     const nextStage = parseInt(req.params.word) + 1;
     const currWord = ansKeys[parseInt(req.params.word) - 1];
     const currDesc = answers[ansKeys[parseInt(req.params.word) - 1]];
 
-    console.log(nextStage);
-    console.log(currWord);
-    console.log(currDesc);
+    // console.log(nextStage);
+    // console.log(currWord);
+    // console.log(currDesc);
+    let player = await factoryServices.getPlayerName()
+
+    let score = await factoryServices.getScore()
 
     if (req.params.word == 4) {
         res.redirect('/stage2/1');
     } else {
-        res.render('stage1', { word: currWord, nextStage: nextStage, obj: currDesc });
+        res.render('stage1', {score, player, word: currWord, nextStage: nextStage, obj: currDesc , usr: usr_id ,add_factory: JSON.stringify(factoryServices)});
+       
     }
 });
 
-app.get('/stage2/:word', (req, res) => {
+app.get('/stage2/:word', async (req, res) => {
     let answers =
     {
         'Iron Man': 'Some of you may know me as Tony Stark, but I am a powered armour suit with superhuman strength, speed and reflexes. What am I ?',
@@ -70,16 +84,17 @@ app.get('/stage2/:word', (req, res) => {
     const nextStage = parseInt(req.params.word) + 1;
     const currWord = ansKeys[parseInt(req.params.word) - 1];
     const currDesc = answers[ansKeys[parseInt(req.params.word) - 1]];
-
+    let player = await factoryServices.getPlayerName()
+    let score = await factoryServices.getScore()
     if (req.params.word == 4) {
-        
+
         res.redirect('/stage3/1');
     } else {
-        res.render('stage2', { word: currWord, nextStage: nextStage, obj: currDesc });
+        res.render('stage2', {score, player, word: currWord, nextStage: nextStage, obj: currDesc , usr: usr_id  });
     }
 });
 
-app.get('/stage3/:word', (req, res) => {
+app.get('/stage3/:word', async (req, res) => {
     let answers =
     {
         'Kettle': 'I am a container used to boil water. If you would like some coffee be sure to use me. What am I ?',
@@ -92,15 +107,16 @@ app.get('/stage3/:word', (req, res) => {
     const nextStage = parseInt(req.params.word) + 1;
     const currWord = ansKeys[parseInt(req.params.word) - 1];
     const currDesc = answers[ansKeys[parseInt(req.params.word) - 1]];
-
+    let player = await factoryServices.getPlayerName();
+    let score = await factoryServices.getScore()
     if (req.params.word == 4) {
         res.redirect('/stage4/1');
     } else {
-        res.render('stage3', { word: currWord, nextStage: nextStage, obj: currDesc });
+        res.render('stage3', {score, player, word: currWord, nextStage: nextStage, obj: currDesc , usr: usr_id  });
     }
 });
 
-app.get('/stage4/:word', (req, res) => {
+app.get('/stage4/:word',async (req, res) => {
     let answers =
     {
         'Germany': 'My flag is black,red and yellow. I am the home for Volkswagen. What am I?',
@@ -113,15 +129,17 @@ app.get('/stage4/:word', (req, res) => {
     const nextStage = parseInt(req.params.word) + 1;
     const currWord = ansKeys[parseInt(req.params.word) - 1];
     const currDesc = answers[ansKeys[parseInt(req.params.word) - 1]];
+    let player = await factoryServices.getPlayerName()
+    let score = await factoryServices.getScore()
 
     if (req.params.word == 4) {
         res.redirect('/stage5/1');
     } else {
-        res.render('stage4', { word: currWord, nextStage: nextStage, obj: currDesc });
+        res.render('stage4', {score, player, word: currWord, nextStage: nextStage, obj: currDesc , usr: usr_id  });
     }
 });
 
-app.get('/stage5/:word', (req, res) => {
+app.get('/stage5/:word',async (req, res) => {
     let answers =
     {
         'McDonalds': 'When you feeling low, we have a clown to have you singing Im loving it. If that still does not work we have a happy meal that comes with a toy. What am I?',
@@ -134,15 +152,16 @@ app.get('/stage5/:word', (req, res) => {
     const nextStage = parseInt(req.params.word) + 1;
     const currWord = ansKeys[parseInt(req.params.word) - 1];
     const currDesc = answers[ansKeys[parseInt(req.params.word) - 1]];
-
+    let player = await factoryServices.getPlayerName()
+    let score = await factoryServices.getScore()
     if (req.params.word == 4) {
         res.redirect('/stage6/1');
     } else {
-        res.render('stage5', { word: currWord, nextStage: nextStage, obj: currDesc });
+        res.render('stage5', {score, player, word: currWord, nextStage: nextStage, obj: currDesc , usr: usr_id  });
     }
 });
 
-app.get('/stage6/:word', (req, res) => {
+app.get('/stage6/:word',async (req, res) => {
     let answers =
     {
         'Pencil case': 'I am a container used to carry all your pencils. What am I?',
@@ -155,11 +174,11 @@ app.get('/stage6/:word', (req, res) => {
     const nextStage = parseInt(req.params.word) + 1;
     const currWord = ansKeys[parseInt(req.params.word) - 1];
     const currDesc = answers[ansKeys[parseInt(req.params.word) - 1]];
-
+    let player = await factoryServices.getPlayerName()
+    let score = await factoryServices.getScore()
     if (req.params.word == 4) {
         res.redirect('/');
-    } else {
-        res.render('stage6', { word: currWord, nextStage: nextStage, obj: currDesc });
+    } else {res.render('stage6', {score, player, word: currWord, nextStage: nextStage, obj: currDesc , usr: usr_id  });
     }
 });
 
