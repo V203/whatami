@@ -1,7 +1,9 @@
 const express = require("express");
 const exphbs = require('express-handlebars');
 const bodyParser = require("body-parser");
+// const party = require("party-js");
 const pg = require('pg');
+
 
 const app = express();
 const Pool = pg.Pool;
@@ -160,6 +162,11 @@ app.get('/stage6/:word', (req, res) => {
         res.render('stage6', { word: currWord, nextStage: nextStage, obj: currDesc });
     }
 });
+
+app.get('/congrats', (req, res) => {
+    
+    res.render('congrats')
+}) 
 
 app.set('view engine', 'handlebars');
 app.engine('handlebars', exphbs({ partialsDir: "./views/partials", viewPath: './views', layoutsDir: './views/layouts' }));
