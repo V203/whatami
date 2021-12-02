@@ -53,15 +53,20 @@ body {
   display: none;
 }
 
-.elementToFadeInAndOut {
-    opacity: 1;
-    animation: fade 2s linear;
+.fadeInAnimation {
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 
-@keyframes fade {
-  0%,100% { opacity: 0 }
-  50% { opacity: 1 }
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+}
+100% {
+    opacity: 1;
+ }
 }
 
 .mainScreen{
@@ -91,9 +96,57 @@ body {
   width: 100%;
 }
 
-.prizeImg{
+.prizeImg1{
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 20%;
+  filter: sepia(79%) saturate(60.78%) hue-rotate(360deg) brightness(15.00%);
+}
+.prizeImg2{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  filter: sepia(79%) saturate(60.78%) hue-rotate(123deg) brightness(50.00%);
+
+}
+.prizeImg3{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+
+.list {
+  list-style: none;
+  padding: 0 0 0 0;
+}
+.prizeImg4{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  filter:  sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%);
+
+}
+.prizeImg5{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  filter: sepia(79%) saturate(2476%) hue-rotate(150deg) brightness(118%);
+
+}
+.prizeImg6{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  filter: sepia(79%) saturate(2476%) hue-rotate(360deg) brightness(118%);
+
+}
+
+.col-6{
+  padding: 5px 5px 5px 5px;
 }

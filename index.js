@@ -146,7 +146,7 @@ app.get('/stage6/:word', async (req, res) => {
 });
 
 app.get('/congrats/:nextStage', (req, res) => {
-    res.render('congrats', {nextStage : req.params.nextStage});
+    res.render('congrats', {nextStage : req.params.nextStage, imgNum : req.params.nextStage - 1});
 }) 
 
 app.set('view engine', 'handlebars');
